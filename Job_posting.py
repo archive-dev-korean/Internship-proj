@@ -977,7 +977,7 @@ def send_emails(unique_jobs, unique_data_list, post_json_path):
         """
         html_res = html_header.format(today, name, total_job_postings, tr)
 
-        sender_email = 'chunjaecloud@gmail.com' 
+        sender_email = '*******@gmail.com' 
         recipient_email = email
         subject = '📌 [천재IT교육센터] 이번주 나에게 맞는 채용공고는?' 
         feedback_ = '📌 [천재IT교육센터] 채용공고 피드백 요청' 
