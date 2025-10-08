@@ -11,7 +11,7 @@
 ## 🔧 사용 기술 스택
 
 - Python (requests, BeautifulSoup, Selenium)
-- MySQL
+- MySQL, MariaDB
 - Linux Shell Script (자동화)
 - Git / GitHub
 - AWS EC2, AWS SES, AWS Dashboard
