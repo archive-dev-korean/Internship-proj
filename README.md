@@ -8,7 +8,7 @@
 
 ---
 
-## 🔧 사용 기술 스택
+## 🔧 사용 기술 
 
 - Python (requests, BeautifulSoup, Selenium)
 - MySQL, MariaDB
