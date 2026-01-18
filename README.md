@@ -6,9 +6,9 @@
 - 2024.09 ~ 2024.11
 ## 사용 기술 및 개발 환경
 - Language : Python, SQL
-- DB : MySQL(local)
+- DB : MySQL(채용 공고 저장), LMS DB 연동(수신자/과정 데이터 조회)
 - Infrastructure : AWS EC2, SES(Configuration Set 기반 발송 추적), Linux cron
-- Monitoring : SES 발송/반송/클레임 이벤트 기반 추적(메일 트래킹 설정)
+- Monitoring : SES 발송 결과 추적 체계(Configuration Set)를 활용
 - Framwork/Platform : Docker
 - Tool : Linux VM, Git, Jira, Slack
 ## 내용
@@ -41,9 +41,8 @@
 
 ### 운영 환경
 - EC2(Linux)에서 cron 기반 배치 실행
-- CloudWatch를 통해 로그/실행 결과를 모니터링
+- 실행 로그 기반으로 장애 원인 추적
 - SES를 통해 대량 메일 발송 처리
-- 장애 발생 시 로그 기반으로 원인 추적 및 재실행 가능하도록 구성
 
 ## 실행 흐름
 1) cron → `run_wanted.sh` 실행  
@@ -60,7 +59,7 @@
 
 
 ## 성과
-- 연간 약 1100만원 인력 비용 절감, 수집 부터  발송 전 과정 무중단 자동화 구축 및 운영 경험
+- 연간 약 1100만원 인력 비용 절감, 수집 부터  발송 전 과정 자동화 구축 및 운영 경험
   - 시급 2만원 x 2시간(정보 수집 및 상담 시간) = 4만원 x 5명 x 52주 = 대략 1100만원
 ## 참고 사항
 > 해당 프로젝트는 팀 공동 소유이며, 
