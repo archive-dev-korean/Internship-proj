@@ -6,8 +6,9 @@
 - 2024.09 ~ 2024.11
 ## 사용 기술 및 개발 환경
 - Language : Python, SQL
-- DB : MariaDB(local)
-- Infrastructure : AWS SES, Cloudwatch, EC2
+- DB : MySQL(local)
+- Infrastructure : AWS EC2, SES(Configuration Set 기반 발송 추적), Linux cron
+- Monitoring : SES 발송/반송/클레임 이벤트 기반 추적(메일 트래킹 설정)
 - Framwork/Platform : Docker
 - Tool : Linux VM, Git, Jira, Slack
 ## 내용
@@ -16,8 +17,11 @@
 - 내부 직원들 취업정보 제공에 대한 채용공고 수집 반복 작업 발생
 - 업무 자동화를 통해 업무 효율성 증대 목적
 ### 구현 기능
-- Selenium, BeautifulSoup 기반 비동기 크롤러 개발
-- 프론트엔트 수신 거부 버튼과 결합해 동기 방식으로 구글 시트 업데이트 1주일 단위 배치로 DB 수신자 상태 업데이트
+- Selenium/BeautifulSoup 기반 채용 공고 수집 및 정제 로직 구현
+- 공고 마감 여부 확인 작업을 asyncio로 동시 처리하여 검증 시간 단축 (동시 실행 수 제한 적용)
+- 수신 거부(Google Form/Sheet) 기반 차단 로직을 발송 직전 조회로 즉시 반영, DB는 주기 배치로 동기화
+- SES 메일 발송 시 Configuration Set을 지정해 발송 로그/추적 체계에 맞춰 애플리케이션을 연동
+
 ### 크롤링 전략
 - 해당 사이트 담당자에게 크롤링 날짜/시간 관련 이메일 발송 후 결정
   - 원티드 : 매 수,토 요일 오전 1시 기준 공고 대략 20개씩 크롤링 진행
