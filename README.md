@@ -1,24 +1,34 @@
 # 맞춤형 채용 공고 제공 프로젝트
-
-> 📍 본 프로젝트는 **(주)천재교육 인턴십** 기간 중 진행된 **팀 프로젝트**이며,  
-> 이 레포지토리에는 공동 구현 코드가 포함되어 있습니다.  
-> 아래 명시된 항목은 제가 **직접 구현하거나 주도적으로 개발한 부분**입니다.
-> 
-> 전체 시연 영상 및 결과물은 👉 [노션 포트폴리오](https://magical-rate-172.notion.site/1626ab8db08980dc9ea3d0281826ef06)에서 확인하실 수 있습니다.
-
----
-
-## 🔧 사용 기술 
-
-- Python (requests, BeautifulSoup, Selenium)
-- MySQL, MariaDB
-- Linux Shell Script (자동화)
-- Git / GitHub
-- AWS EC2, AWS SES, AWS Dashboard
-
----
-
-## 📌 직접 기여 및 구현 스크립트 설명
+## 개요
+- Python 기반 데이터 자동화 수집 스크립트와 AWS를 통한 운영을 통해 LMS(Learning Machine Service)와 연동하는 서비스.
+- 해당 서비스를 통해 자사의 KDT(K-Digital Training) 수강생에게 맞춤형 채용 공고를 이메일로 전송하고 사후 관리.
+- **해당 서비스에서 담당한 부분만 발췌**
+## 일정
+- 2024.09 ~ 2024.11
+## 사용 기술 및 개발 환경
+- Language : Python, SQL
+- DB : MariaDB(local)
+- Infrastructure : AWS SES, Cloudwatch, EC2
+- Framwork/Platform : Docker
+- Tool : Linux VM, Git, Jira, Slack
+## 내용
+### 구현 기능
+- Selenium, BeautifulSoup 기반 비동기 크롤러 개발
+- 프론트엔트 수신 거부 버튼과 결합해 동기 방식으로 구글 시트 업데이트 1주일 단위 배치로 DB 수신자 상태 업데이트
+### 크롤링 전략
+- 해당 사이트 담당자에게 크롤링 날짜/시간 관련 이메일 발송 후 결정
+  - 원티드 : 매 수,토 요일 오전 1시 기준 공고 대략 20개씩 크롤링 진행
+### 메일 발송 전략
+- 채용 공고 정보를 설정한 조건에 따라 필터링
+- 과정 조건 검사 : 각 과정 시작일 기준 4.5개월(4개월 15일)개월 후부터 종료일 기준 6개월 이전까지 메일 자동 발송, 그 이후 메일 발송 거부
+- 학생 상태 조건 검사 : 학생 상태 조건 검사: 취업, 중도 포기, 수강철회는 보내지 않고 교육 중, 수료, 조기 수료는 메일 보냄
+- 공고 검사 : 마감된 URL공고 확인을 위해 각 사이트 별 10개씩 검사
+### 수신 거부 전략
+- 수신 버튼 클릭 시 구글 설문조사 폼으로 이동
+- 구글 시트에 이름/메일 입력
+- 메일 발송 전 시트 확인해 수신 여부 결정
+### 공고명 키워드
+<img width="812" height="902" alt="image" src="https://github.com/user-attachments/assets/88f08cec-ce43-45c5-9a04-f14ce10a09fa" />
 
 ### 1️⃣`wanted_crawling.py`
 ***원티드 채용공고 페이지 구조를 분석하고 크롤링***
