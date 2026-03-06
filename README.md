@@ -11,6 +11,7 @@
 - Monitoring : SES 발송 결과 추적 체계(Configuration Set)를 활용
 - Framwork/Platform : Docker
 - Tool : Linux VM, Git, Jira, Slack
+<!--
 ## 내용
 ### 개발 배경
 - KDT 운영 절차상 수료 후 6개월간 취업 지원 서비스 필수
@@ -43,12 +44,12 @@
 - EC2(Linux)에서 cron 기반 배치 실행
 - 실행 로그 기반으로 장애 원인 추적
 - SES를 통해 대량 메일 발송 처리
-
+-->
 ## 실행 흐름
 1) cron → `run_wanted.sh` 실행  
 2) `wanted_crawling.py` 크롤링 및 DB 저장  
 3) `Job_posting.py` 수신거부/조건 필터링 후 SES 발송
-
+<!--
 ### 공고명 키워드
 <img width="783" height="840" alt="image" src="https://github.com/user-attachments/assets/a7dcb453-823c-4f5b-8030-9cd04c55a0ca" />
 
@@ -61,6 +62,7 @@
 ## 성과
 - 연간 약 1100만원 인력 비용 절감, 수집 부터  발송 전 과정 자동화 구축 및 운영 경험
   - 시급 2만원 x 2시간(정보 수집 및 상담 시간) = 4만원 x 5명 x 52주 = 대략 1100만원
+-->
 ## 참고 사항
 > 해당 프로젝트는 팀 공동 소유이며, 
 > 개인정보나 민감한 회사 내부 설정 정보(인프라 구조, 시퀀스 등)는 포함되어 있지 않습니다.
